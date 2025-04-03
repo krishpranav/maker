@@ -10,7 +10,6 @@
 
 import Vue from "vue";
 import Router from "vue-router";
-import view from "vue-router/src/components/view";
 
 Vue.use(Router);
 
@@ -30,13 +29,28 @@ export default new Router({
         {
             path: "/projectLoaded",
             name: "projectLoaded",
-            component: view('ProjectPage')
-        }
+            component: view('ProjectLoadedPage')
+        },
+        {
+            path: "/emulator",
+            name: "emulator",
+            component: view('EmulatorPage')
+        },
+        {
+            path: "/setting",
+            name: "setting",
+            component: view('SettingPage')
+        },
+        {
+            path: "/about",
+            name: "About",
+            component: view('AboutPage')
+        },
     ]
 });
 
 function view(name) {
     return function (resolve) {
-        require(['@/components/page' + name + '.vue', resolve]);
+        require(['@/components/pages/' + name + '.vue'], resolve);
     };
 }
